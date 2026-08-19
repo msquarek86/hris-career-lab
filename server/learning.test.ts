@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { courseLessons, courseModules, findLesson, getModulePractice } from "../shared/course";
+import { courseLessons, courseModules, findLesson, getModuleLearningExtension, getModulePractice } from "../shared/course";
 import { appRouter } from "./routers";
 import type { TrpcContext } from "./_core/context";
 
@@ -39,6 +39,13 @@ describe("HRIS course catalog", () => {
     expect(courseModules.every((module) => {
       const practice = getModulePractice(module.id);
       return Boolean(practice && practice.suggestions.length >= 2 && practice.interviewQuestions.length >= 2 && practice.challenge.prompt.length > 80);
+    })).toBe(true);
+  });
+
+  it("provides a source-linked video and guided practical session for every module", () => {
+    expect(courseModules.every((module) => {
+      const extension = getModuleLearningExtension(module.id);
+      return Boolean(extension && extension.video.url.startsWith("https://") && extension.video.outcome.length > 30 && extension.practicalSession.steps.length >= 3);
     })).toBe(true);
   });
 });

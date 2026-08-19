@@ -315,3 +315,80 @@ export const modulePractice: Record<string, ModulePractice> = {
 export function getModulePractice(moduleId: string) {
   return modulePractice[moduleId];
 }
+
+export type LearningExtension = {
+  video: {
+    title: string;
+    source: string;
+    url: string;
+    duration: string;
+    status: "Recommended" | "Optional";
+    outcome: string;
+    caution?: string;
+  };
+  practicalSession: {
+    title: string;
+    duration: string;
+    steps: string[];
+    deliverable: string;
+  };
+};
+
+export const moduleLearningExtensions: Record<string, LearningExtension> = {
+  diagnostic: {
+    video: { title: "Building your career: Breaking into the people profession", source: "CIPD", url: "https://www.youtube.com/watch?v=9_LAfYaijVQ", duration: "Provider runtime", status: "Optional", outcome: "Use a people-profession career discussion to frame your own evidence-based return-to-work plan." },
+    practicalSession: { title: "30-minute career baseline session", duration: "30 min", steps: ["Set a timer and answer the diagnostic prompts without external help.", "Sort answers into confident, refresh, and learn-next categories.", "Choose one HR, one HRIS, and one communication goal for the coming week."], deliverable: "A one-page baseline and a realistic one-week learning plan." },
+  },
+  "hr-foundations": {
+    video: { title: "Introduction to Human Resource Management", source: "From A Business Professor", url: "https://www.youtube.com/watch?v=4YRchaXY2-M", duration: "Provider runtime", status: "Recommended", outcome: "Refresh the modern HR function before mapping the employee lifecycle." },
+    practicalSession: { title: "Employee lifecycle mapping lab", duration: "35 min", steps: ["Select a familiar organization or use a fictional company.", "Map recruitment, hire, onboarding, movement, absence, performance, and exit.", "For every stage, identify one record, one owner, and one employee-facing communication."], deliverable: "A lifecycle map with records, roles, and employee-experience risks." },
+  },
+  "talent-acquisition": {
+    video: { title: "SHRM: How to Recruit “Hidden Talent”", source: "Workforce.com with SHRM guest Julie Schweber", url: "https://www.youtube.com/watch?v=iZujLexGi-U", duration: "Provider runtime", status: "Recommended", outcome: "Practice evaluating adjacent skills, transferable experience, and behavioral evidence rather than keyword matching alone.", caution: "Treat attitude-first hiring as a strategy discussion; required credentials still matter in regulated or safety-critical roles." },
+    practicalSession: { title: "Sourcing and screening sprint", duration: "45 min", steps: ["Choose a hypothetical HR Operations Specialist role and define five essential criteria.", "Draft a Boolean search string and a five-point screening rubric.", "Compare three hypothetical candidates using only your rubric and document the evidence."], deliverable: "A sourcing plan, Boolean string, screening rubric, and brief candidate-comparison note." },
+  },
+  "hr-operations": {
+    video: { title: "Professional behaviours and valuing people", source: "CIPD", url: "https://www.youtube.com/watch?v=bMCFrnaZPNA", duration: "Provider runtime", status: "Optional", outcome: "Reflect on professional behavior, fairness, and people-centred judgment while handling operational HR work." },
+    practicalSession: { title: "HR service desk simulation", duration: "40 min", steps: ["Read a fictional employee request involving a delayed transfer, absence record, or benefits query.", "List the facts you need, the policy boundary, the likely owner, and the response deadline.", "Write a concise employee reply and a separate internal follow-up note."], deliverable: "An employee-facing response plus a factual internal action log." },
+  },
+  "hris-foundation": {
+    video: { title: "What Is an HRIS? — AIHR Learning Bite", source: "AIHR — Academy to Innovate HR", url: "https://www.youtube.com/watch?v=Y72bRzL-bHU", duration: "Provider runtime", status: "Recommended", outcome: "Connect employee data, HR processes, and organizational performance to the HRIS foundation lessons." },
+    practicalSession: { title: "HRIS data-quality lab", duration: "45 min", steps: ["Choose an employee event such as a promotion or transfer.", "List the worker, job, position, organization, cost-centre, and approval data that may change.", "Identify two data-quality checks and one report that could reveal an error."], deliverable: "A one-page process-to-data map with controls and a reporting check." },
+  },
+  "workday-hcm": {
+    video: { title: "Introduction to Business Process in Workday HCM", source: "ZaranTech public tutorial", url: "https://www.youtube.com/watch?v=hFRXvvHKatw", duration: "Provider runtime", status: "Optional", outcome: "Hear common Workday business-process terminology before applying it to a simulated employee lifecycle." , caution: "This is third-party conceptual training, not official Workday certification, tenant access, or configuration authorization." },
+    practicalSession: { title: "Simulated Workday workflow lab", duration: "40 min", steps: ["Pick a hire, promotion, or transfer scenario.", "Separate the business event, system workflow, approval roles, security considerations, and report need.", "Mark which activity is conceptual versus what would require a real tenant."], deliverable: "A simulated workflow map with explicit learning boundaries." },
+  },
+  "workday-recruiting": {
+    video: { title: "How to Create Prospects & Candidates", source: "Workday Recruiting public tutorial", url: "https://www.youtube.com/watch?v=d6VV8l_p6e8", duration: "Provider runtime", status: "Optional", outcome: "Observe the conceptual movement from prospect to active candidate before practising recruiting-stage decisions.", caution: "Use this as a public conceptual demonstration; configuration and navigation vary by organization and require authorized tenant access." },
+    practicalSession: { title: "Recruiting workflow simulation", duration: "45 min", steps: ["Write a new-position business requirement and approval path.", "Map requisition, sourcing, screening, interview, offer, hire, and onboarding handoff stages.", "For each stage, note the candidate communication and internal decision evidence required."], deliverable: "A candidate-stage workflow with owners, decision points, and communications." },
+  },
+  "hr-analytics": {
+    video: { title: "What is HR Analytics? — AIHR Learning Bite", source: "AIHR — Academy to Innovate HR", url: "https://www.youtube.com/watch?v=2aq0wXB00OM", duration: "Provider runtime", status: "Recommended", outcome: "Differentiate people, workforce, HR, and talent analytics before building a focused recruitment or HR report." },
+    practicalSession: { title: "Recruitment funnel analysis lab", duration: "45 min", steps: ["Create a five-stage fictional hiring funnel with stage counts.", "Calculate conversion rates and identify the stage with the largest drop-off.", "Write one data-quality check and one cautious recommendation for a recruiting leader."], deliverable: "A simple funnel table, conversion calculations, and an evidence-led recommendation." },
+  },
+  "hrbp-strategy": {
+    video: { title: "What I Wish I’d Known — HR Directors", source: "CIPD webinar", url: "https://www.youtube.com/watch?v=ciYnvpyHrvo", duration: "Provider runtime", status: "Optional", outcome: "Reflect on the professional judgment, stakeholder perspective, and career lessons shared by senior HR practitioners." },
+    practicalSession: { title: "Manager advisory case", duration: "40 min", steps: ["Read a fictional manager request combining attrition, engagement, and urgent hiring pressure.", "List the business questions, people risks, policy considerations, and data needed.", "Prepare a three-minute advisory response with options and trade-offs."], deliverable: "A manager advisory brief and verbal-response outline." },
+  },
+  communication: {
+    video: { title: "Think Fast, Talk Smart: Communication Techniques", source: "Stanford Graduate School of Business / Think Fast Talk Smart", url: "https://www.youtube.com/watch?v=HAnw168huqA", duration: "58 min", status: "Recommended", outcome: "Use communication techniques to structure clear HR updates, difficult conversations, and interview responses." },
+    practicalSession: { title: "HR communication rehearsal", duration: "35 min", steps: ["Choose a hiring-manager update, employee escalation, or interview answer from this module.", "Prepare a purpose-first outline with evidence, recommendation, and next action.", "Record a two-minute rehearsal, then revise for clarity, professionalism, and stakeholder awareness."], deliverable: "A revised message and a two-minute spoken response outline." },
+  },
+  "ai-for-hr": {
+    video: { title: "Beyond the Hype: Ethical AI in Recruitment", source: "Jobylon webinar", url: "https://www.youtube.com/watch?v=JqpTRydDQPI", duration: "Provider runtime", status: "Recommended", outcome: "Examine how efficiency, fairness, privacy, human oversight, and candidate experience interact in AI-supported hiring." },
+    practicalSession: { title: "Responsible AI prompt review", duration: "30 min", steps: ["Draft a generic prompt to improve a job-description structure.", "Highlight confidential, identifying, or sensitive employee and candidate data that must never be included.", "Add a human-review checkpoint for accuracy, bias, and final decision ownership."], deliverable: "A safe prompt, exclusion list, and human-oversight checklist." },
+  },
+  "career-reentry": {
+    video: { title: "Building your career: Breaking into the people profession", source: "CIPD", url: "https://www.youtube.com/watch?v=9_LAfYaijVQ", duration: "Provider runtime", status: "Recommended", outcome: "Use a people-profession career discussion to strengthen credible positioning, networking, and return-to-work planning." },
+    practicalSession: { title: "Career-return interview rehearsal", duration: "40 min", steps: ["Write an honest 90-second career-break explanation.", "Choose two real examples that demonstrate HR capability or recent development.", "Practise answering why you are returning now and why you are suited to the target role."], deliverable: "A factual career narrative, two STAR-story outlines, and a target-role statement." },
+  },
+  capstone: {
+    video: { title: "Think Fast, Talk Smart: Communication Techniques", source: "Stanford Graduate School of Business / Think Fast Talk Smart", url: "https://www.youtube.com/watch?v=HAnw168huqA", duration: "58 min", status: "Optional", outcome: "Review how to present a concise, structured response before delivering the integrated capstone briefing." },
+    practicalSession: { title: "90-minute HR professional simulation", duration: "90 min", steps: ["Read the capstone scenario and sort each issue by urgency, impact, and dependency.", "Create a first-day action plan with owners, evidence required, and stakeholder updates.", "Deliver a five-minute verbal briefing, then self-assess prioritization, professionalism, and judgment."], deliverable: "A prioritized action plan, stakeholder communication plan, and capstone briefing outline." },
+  },
+};
+
+export function getModuleLearningExtension(moduleId: string) {
+  return moduleLearningExtensions[moduleId];
+}

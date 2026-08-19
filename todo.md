@@ -23,3 +23,10 @@
 - [x] Add curriculum-derived end-of-module learning suggestions, interview questions, and interview-style practice challenges.
 - [x] Update the README and verification notes to describe the privacy-first open course model and revised deployment requirements.
 - [x] Test and visually verify the open dashboard, lesson completion, local resume behavior, and new challenge content on desktop and mobile.
+- [x] Research and validate freely accessible, credible video-learning resources aligned with the HRIS course modules.
+- [x] Add module-specific video cards with source, URL, expected learning outcome, and mandatory or optional status.
+- [x] Add structured practical-session guides that turn module practice into timed, self-directed learning activities.
+- [x] Update the open-course documentation and verify video links and practical-session layouts across desktop and mobile.
+- [x] Validate or replace every external video recommendation so all live course links have a checked source, title, and topical fit.
+- [x] Verify the video-briefing documentation edits and test an in-app external-video link flow on desktop and mobile.
+- [x] Verify the external-video anchor action under the mobile lesson layout and record the result separately from the desktop link check.

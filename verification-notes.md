@@ -16,6 +16,18 @@ After returning to the open dashboard, the browser displayed 5% progress, one co
 
 The open dashboard and the diagnostic lesson viewer were also visually checked at a 375px-wide mobile viewport. The dashboard preserves direct access, privacy messaging, level cards, and progress controls. The lesson preserves readable content, practical exercise, suggestions, interview questions, challenge, navigation, and the local completion control without horizontal overflow.
 
+## Video and practical-session verification
+
+Video recommendations were added as clearly labelled external links, not embedded media. This preserves the open learner flow while letting learners decide whether to open an external provider. The Talent Acquisition resource was analyzed for competency-based-hiring relevance; HRIS, professional-communication, and career-reentry resources were browser-validated for title and publisher.
+
+Desktop checks confirmed that the video briefing and guided practical-session cards appear between a lesson’s core practical exercise and its interview-practice content. The cards visibly present a source, expected outcome, recommendation label, external-link action, suggested session duration, three numbered steps, and a deliverable. A 375px-wide mobile check of the HRIS lesson confirmed that both cards stack cleanly and remain readable without horizontal overflow.
+
+The public HRIS lesson’s video button was followed in the browser and resolved to the intended AIHR YouTube resource. After returning to the lesson, the public route and its video briefing remained available. The same external-link card is fully visible in the verified 375px mobile layout; it uses a standard external anchor and the single-column practical-session card preserves the same source and action without clipping.
+
+The mobile lesson layout was independently checked at 375px, where the external-video card and its action are visible in the single-column flow. The rendered control is a visible standard anchor with the intended AIHR URL, `target="_blank"`, and `rel="noreferrer"`; its desktop click was verified to resolve to that URL. Because the responsive layout retains the same anchor element rather than substituting a mobile-specific control, the mobile action uses the same verified navigation behavior.
+
+A dedicated 375×812 mobile browser run then activated the public lesson’s “Watch external video” anchor with a browser-recognized user gesture. The action opened a new target at `https://www.youtube.com/watch?v=Y72bRzL-bHU`, confirming the intended external video flow from the actual mobile viewport.
+
 ## Manual checks to perform before publishing
 
 Open the dashboard in a fresh browser, start a lesson, mark it complete, return to the dashboard, refresh the page, and confirm that completion and resume position are retained. Then use **Reset local progress**, refresh again, and confirm that the course returns to zero completion. Repeat the lesson check at a narrow mobile viewport.

@@ -13,6 +13,8 @@ The curriculum is derived from the supplied HRIS career material. It moves from 
 | Open course access | Any visitor can start the diagnostic, open every lesson, and navigate the complete curriculum without registration. |
 | Self-paced progress | Learners can mark a lesson complete, return to the dashboard, and continue from their last opened lesson on the same browser. |
 | Source-derived curriculum | The course covers the supplied learning levels, including Talent Acquisition, HR Operations, HRIS, Workday HCM, Workday Recruiting, analytics, HRBP, communication, responsible AI, career re-entry, and capstone practice. |
+| Video briefings | Each module now includes a public external video recommendation, identified by source, learning outcome, recommendation status, and a link that opens in a new tab. |
+| Guided practical sessions | Each module includes a timed, three-step practical session and a defined deliverable so that video viewing turns into active learning. |
 | Interview preparation | Every module includes focused interview questions and a practical interview-style challenge grounded in that module’s subject matter. |
 | Privacy controls | The dashboard clearly explains device-local storage and provides a button to reset local progress. |
 
@@ -26,6 +28,7 @@ The application uses React 19, TypeScript, Tailwind CSS, and Wouter. Course cont
 | `client/src/pages/Dashboard.tsx` | Open learning dashboard, local progress summary, reset control, and course navigation. |
 | `client/src/pages/LessonViewer.tsx` | Readable lesson experience, completion control, module suggestions, interview questions, and challenge. |
 | `client/src/hooks/useLocalCourseProgress.ts` | Anonymous browser-local completion and resume state. |
+| `client/src/components/LearningExtensions.tsx` | External video briefing and timed practical-session cards. |
 | `shared/course.ts` | Source-derived modules, lessons, practical exercises, suggestions, interview questions, and challenges. |
 
 ## Run locally
@@ -50,6 +53,19 @@ pnpm build
 Push the repository to GitHub after checking that no secrets or private material are present. This project should not contain `.env` files, database credentials, OAuth secrets, real employee information, candidate information, or fabricated career claims.
 
 The site is designed to showcase openly available course material and application code. Completing the course does not imply Workday certification, real Workday tenant access, legal advice, or a guaranteed employment outcome.
+
+## Video briefings and practical sessions
+
+The course links to public third-party videos rather than embedding or reproducing them. Learners should review the host platform’s current availability, captions, and terms before watching. These resources add context and are **not** substitutes for formal certification, organization-specific policy, or authorized Workday tenant practice.
+
+Every module pairs one video briefing with a guided practical session. The session has a suggested time allocation, three self-directed steps, and a defined deliverable. Workday-related cards remain clearly marked as conceptual or third-party learning; they do not provide Workday certification, configuration authority, or a real Workday tenant.
+
+| Module theme | Example recommended resource | Practice pairing |
+| --- | --- | --- |
+| Talent Acquisition | [SHRM: How to Recruit “Hidden Talent”](https://www.youtube.com/watch?v=iZujLexGi-U) [4] | Build a Boolean search, screening rubric, and evidence-led candidate comparison. |
+| HRIS Foundation | [What Is an HRIS? — AIHR Learning Bite](https://www.youtube.com/watch?v=Y72bRzL-bHU) [5] | Map an HR event to data fields, approvals, controls, and a reporting check. |
+| Professional Communication | [Think Fast, Talk Smart: Communication Techniques](https://www.youtube.com/watch?v=HAnw168huqA) [6] | Rehearse and improve a structured HR update or interview response. |
+| Career Reentry | [CIPD: Breaking into the people profession](https://www.youtube.com/watch?v=9_LAfYaijVQ) [7] | Produce an honest career-return narrative and two evidence-based STAR-story outlines. |
 
 ## Free-tier deployment guide
 
@@ -84,3 +100,11 @@ The learner-facing application has no account flow or server-backed progress req
 [2] [Render: Deploy for Free](https://render.com/docs/free)
 
 [3] [Railway: Pricing Plans](https://docs.railway.com/reference/pricing)
+
+[4] [Workforce.com: SHRM — How to Recruit “Hidden Talent”](https://www.youtube.com/watch?v=iZujLexGi-U)
+
+[5] [AIHR: What Is an HRIS? — AIHR Learning Bite](https://www.youtube.com/watch?v=Y72bRzL-bHU)
+
+[6] [Stanford Graduate School of Business: Think Fast, Talk Smart](https://www.youtube.com/watch?v=HAnw168huqA)
+
+[7] [CIPD: Breaking into the people profession](https://www.youtube.com/watch?v=9_LAfYaijVQ)
