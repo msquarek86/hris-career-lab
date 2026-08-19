@@ -1,0 +1,32 @@
+.hris-app {
+  font-family: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+}
+
+.font-display {
+  font-family: "DM Serif Display", ui-serif, Georgia, serif;
+}
+
+.section-kicker {
+  color: #9a6b1d;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.hris-grid {
+  background-image: linear-gradient(rgba(16, 42, 67, 0.055) 1px, transparent 1px), linear-gradient(90deg, rgba(16, 42, 67, 0.055) 1px, transparent 1px);
+  background-position: center;
+  background-size: 34px 34px;
+  mask-image: linear-gradient(to bottom, black, transparent 88%);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hris-app button {
+    transition-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  .hris-app button:active {
+    transform: scale(0.98);
+  }
+}

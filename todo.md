@@ -1,0 +1,25 @@
+# Project TODO
+
+- [x] Extract the uploaded HRIS course material into a structured, source-faithful course outline.
+- [x] Define database tables and typed server procedures for course completion and resume position.
+- [x] Apply the learner-progress database migration and verify the resulting schema.
+- [x] Build a responsive, polished public landing page that introduces the HRIS curriculum and directs visitors to Manus OAuth sign-in.
+- [x] Implement the Manus OAuth sign-in, signed-in learner navigation, and secure logout flow using the supplied authentication framework.
+- [x] Build the course dashboard with total progress, completed lessons, module navigation, and a next-lesson continuation action.
+- [x] Build accessible lesson-viewer pages with source-derived headings, readable content, and correctly formatted code blocks where present.
+- [x] Persist per-user lesson completion and resume position, including reliable continue-learning behavior.
+- [x] Create refined responsive navigation, mobile layouts, keyboard interactions, and meaningful empty/loading/error states.
+- [x] Add focused Vitest coverage for the course catalog and learner-progress procedures.
+- [x] Write a GitHub-ready README with project overview, local setup, Manus OAuth notes, and free-tier Render, Railway, and Vercel deployment guidance.
+- [x] Run type checks and tests, visually verify desktop and mobile screens, and resolve discovered issues.
+- [x] Review this TODO list, mark completed work accurately, and save the completed project checkpoint.
+- [x] Verify the applied `lesson_progress` database table, unique constraint, and foreign key after migration.
+- [x] Add explicit dashboard and lesson-viewer query errors plus visible failure feedback for progress-saving actions.
+- [x] Add mocked Vitest coverage for successful learner-progress updates and dashboard resume/next-lesson calculation.
+- [x] Visually verify authenticated learner dashboard and lesson-viewer progress flows on desktop and mobile. Superseded by the account-free learning model.
+- [x] Remove Manus OAuth signup/login prompts, protected-route gates, and account-dependent learner navigation from the public course experience.
+- [x] Replace server-backed learner progress with local device storage so anyone can learn without an account or email collection.
+- [x] Make the landing page, dashboard, and lessons explicitly open and self-paced with no registration requirement.
+- [x] Add curriculum-derived end-of-module learning suggestions, interview questions, and interview-style practice challenges.
+- [x] Update the README and verification notes to describe the privacy-first open course model and revised deployment requirements.
+- [x] Test and visually verify the open dashboard, lesson completion, local resume behavior, and new challenge content on desktop and mobile.

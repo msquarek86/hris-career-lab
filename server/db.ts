@@ -1,6 +1,6 @@
-import { eq } from "drizzle-orm";
+import { and, desc, eq } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
-import { InsertUser, users } from "../drizzle/schema";
+import { InsertUser, lessonProgress, users } from "../drizzle/schema";
 import { ENV } from './_core/env';
 
 let _db: ReturnType<typeof drizzle> | null = null;
@@ -89,4 +89,68 @@ export async function getUserByOpenId(openId: string) {
   return result.length > 0 ? result[0] : undefined;
 }
 
-// TODO: add feature queries here as your schema grows.
+export async function getLessonProgressForUser(userId: number) {
+  const db = await getDb();
+  if (!db) return [];
+
+  return db.select().from(lessonProgress).where(eq(lessonProgress.userId, userId));
+}
+
+export async function getMostRecentlyOpenedLesson(userId: number) {
+  const db = await getDb();
+  if (!db) return undefined;
+
+  const rows = await db
+    .select()
+    .from(lessonProgress)
+    .where(eq(lessonProgress.userId, userId))
+    .orderBy(desc(lessonProgress.lastOpenedAt))
+    .limit(1);
+
+  return rows[0];
+}
+
+export async function markLessonOpened(userId: number, lessonId: string) {
+  const db = await getDb();
+  if (!db) throw new Error("Database is unavailable");
+
+  const rows = await db
+    .select({ id: lessonProgress.id })
+    .from(lessonProgress)
+    .where(and(eq(lessonProgress.userId, userId), eq(lessonProgress.lessonId, lessonId)))
+    .limit(1);
+  const row = rows[0];
+
+  if (row) {
+    await db.update(lessonProgress).set({ lastOpenedAt: new Date() }).where(eq(lessonProgress.id, row.id));
+  } else {
+    await db.insert(lessonProgress).values({ userId, lessonId, lastOpenedAt: new Date() });
+  }
+}
+
+export async function setLessonCompletion(userId: number, lessonId: string, completed: boolean) {
+  const db = await getDb();
+  if (!db) throw new Error("Database is unavailable");
+
+  const rows = await db
+    .select({ id: lessonProgress.id })
+    .from(lessonProgress)
+    .where(and(eq(lessonProgress.userId, userId), eq(lessonProgress.lessonId, lessonId)))
+    .limit(1);
+  const existing = rows[0];
+  const now = new Date();
+
+  if (existing) {
+    await db
+      .update(lessonProgress)
+      .set({ completedAt: completed ? now : null, lastOpenedAt: now })
+      .where(eq(lessonProgress.id, existing.id));
+  } else {
+    await db.insert(lessonProgress).values({
+      userId,
+      lessonId,
+      completedAt: completed ? now : null,
+      lastOpenedAt: now,
+    });
+  }
+}
