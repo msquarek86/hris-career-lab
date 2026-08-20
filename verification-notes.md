@@ -43,3 +43,13 @@ The static course was successfully published at `https://msquarek86.github.io/hr
 On the published lesson, selecting **Mark complete** immediately changed the status to **Completed** and the control to **Mark incomplete**. The published dashboard then showed 5% progress, one of 21 lessons complete, the HRIS lesson as the continuation point, and Level 4 as one of two lessons complete. This confirms the public course preserves its no-account, browser-local progress behavior.
 
 The public lesson’s **Watch external video** action resolved to the intended AIHR YouTube URL. YouTube displayed its own anonymous-session “Sign in to confirm you’re not a bot” wall in this browser, but the course link and destination were correct; video availability beyond that page is governed by YouTube’s controls, not the course site.
+
+## Worksheet, progress, and notes verification
+
+Desktop checks confirmed an overall completion bar and clear percentage in the dashboard summary and in the lesson status card. The lesson practical-exercise card now exposes a worksheet download action, while the private notes panel visibly explains browser-local storage, offers a multiline editor, and reports its save state. At a 375px mobile viewport, the worksheet action, practical-session cards, notes editor, completion control, and overall journey bar remain within a single readable column without horizontal overflow.
+
+In the development course, a representative HRIS reflection was entered in the lesson-notes editor. The panel immediately changed from **Not shared** to **Saved in this browser**, displayed the local auto-save message, and exposed a clear-note action. The note contains no account identity or network submission path.
+
+The HRIS lesson’s worksheet action produced the expected client-side file, `hris-architecture-worker-data-and-organizations-worksheet.html`, in the browser download history. This confirms the worksheet is generated and downloaded directly by the static course rather than retrieved from a learner account or server-side file store.
+
+After returning to the development lesson, the representative HRIS note remained visible with its **Saved in this browser** status, confirming persistence across navigation. The downloaded worksheet contained the HRIS Foundation label, source-derived objectives, key ideas, practical exercise, reflection fields, the module interview questions, and the HRIS process-map challenge.

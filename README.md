@@ -4,7 +4,7 @@ HRIS Career Lab is a free, open, self-paced learning site for HR professionals b
 
 The curriculum is derived from the supplied HRIS career material. It moves from a baseline diagnostic through progressive HR and HRIS learning levels to a simulated HR/TA capstone. Lessons combine objectives, readable content, workplace context, practical exercises, end-of-module learning suggestions, interview questions, and interview-style challenges.
 
-> **Privacy model:** Visitors do not need to sign up, provide an email address, create a password, or create a learner profile. Lesson completion and resume position are stored only in the current browser’s local storage. Clearing browser data or switching devices clears that local progress.
+> **Privacy model:** Visitors do not need to sign up, provide an email address, create a password, or create a learner profile. Lesson completion, resume position, and private lesson notes are stored only in the current browser’s local storage. Clearing browser data or switching devices clears that local learning state.
 
 ## What learners can do
 
@@ -16,6 +16,9 @@ The curriculum is derived from the supplied HRIS career material. It moves from 
 | Video briefings | Each module now includes a public external video recommendation, identified by source, learning outcome, recommendation status, and a link that opens in a new tab. |
 | Guided practical sessions | Each module includes a timed, three-step practical session and a defined deliverable so that video viewing turns into active learning. |
 | Interview preparation | Every module includes focused interview questions and a practical interview-style challenge grounded in that module’s subject matter. |
+| Downloadable worksheets | Every lesson can generate a printable HTML worksheet containing its source-derived objectives, key ideas, practical exercise, reflection space, interview questions, and challenge. |
+| Visual progress | The dashboard and lesson viewer show an accessible overall completion bar, percentage, and lesson count. |
+| Private learner notes | Every lesson includes an automatically saved notes workspace stored only in the learner’s current browser. |
 | Privacy controls | The dashboard clearly explains device-local storage and provides a button to reset local progress. |
 
 ## Technology
@@ -27,9 +30,11 @@ The application uses React 19, TypeScript, Tailwind CSS, and Wouter. Course cont
 | `client/src/pages/Home.tsx` | Public landing page and curriculum introduction. |
 | `client/src/pages/Dashboard.tsx` | Open learning dashboard, local progress summary, reset control, and course navigation. |
 | `client/src/pages/LessonViewer.tsx` | Readable lesson experience, completion control, module suggestions, interview questions, and challenge. |
-| `client/src/hooks/useLocalCourseProgress.ts` | Anonymous browser-local completion and resume state. |
+| `client/src/hooks/useLocalCourseProgress.ts` | Anonymous browser-local completion, resume, and per-lesson note state. |
 | `client/src/components/LearningExtensions.tsx` | External video briefing and timed practical-session cards. |
+| `client/src/components/WorksheetDownload.tsx` | Client-side worksheet generation and download action. |
 | `shared/course.ts` | Source-derived modules, lessons, practical exercises, suggestions, interview questions, and challenges. |
+| `shared/worksheet.ts` | Safe printable worksheet document generation from source-derived lesson data. |
 
 ## Run locally
 

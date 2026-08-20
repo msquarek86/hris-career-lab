@@ -50,3 +50,11 @@
 - [x] Verify the public homepage, dashboard, direct lesson fallback, video links, and browser-local learning progress.
 - [x] Fix the GitHub Pages Actions workflow so pnpm is installed before Node dependency caching and the first public deploy succeeds.
 - [x] Remove the conflicting workflow pnpm version override so GitHub Actions uses the repository’s declared pnpm release.
+- [x] Define downloadable worksheet content for every source-derived lesson without introducing unsupported course claims.
+- [x] Add a per-lesson worksheet download action that works in the public static site.
+- [x] Add an accessible visual overall-completion progress bar to the learner dashboard and lesson experience.
+- [x] Add a browser-local learner-notes feature with save status, per-lesson note context, and clear privacy messaging.
+- [x] Create and validate a reusable skill for privacy-first, open-course construction and GitHub Pages publishing.
+- [x] Test worksheets, progress visualization, local notes, and the updated public deployment on desktop and mobile.
+- [ ] Push the worksheet, progress-bar, and local-notes features to the public repository and confirm the GitHub Pages workflow succeeds.
+- [ ] Verify the live GitHub Pages worksheet download, overall progress bar, and browser-local notes on desktop and mobile.

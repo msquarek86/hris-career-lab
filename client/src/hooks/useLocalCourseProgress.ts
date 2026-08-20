@@ -4,6 +4,7 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 type StoredCourseProgress = {
   completedLessonIds: string[];
   lastOpenedLessonId: string | null;
+  notesByLesson: Record<string, string>;
 };
 
 const STORAGE_KEY = "hris-career-lab-progress-v1";
@@ -11,8 +12,9 @@ const STORAGE_KEY = "hris-career-lab-progress-v1";
 function loadProgress(): StoredCourseProgress {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
-    if (!raw) return { completedLessonIds: [], lastOpenedLessonId: null };
+    if (!raw) return { completedLessonIds: [], lastOpenedLessonId: null, notesByLesson: {} };
     const parsed = JSON.parse(raw) as Partial<StoredCourseProgress>;
+    const notesByLesson = Object.fromEntries(Object.entries(parsed.notesByLesson ?? {}).filter(([id, value]) => courseLessonIds.includes(id) && typeof value === "string"));
     return {
       completedLessonIds: Array.isArray(parsed.completedLessonIds)
         ? parsed.completedLessonIds.filter((id): id is string => typeof id === "string" && courseLessonIds.includes(id))
@@ -20,9 +22,10 @@ function loadProgress(): StoredCourseProgress {
       lastOpenedLessonId: typeof parsed.lastOpenedLessonId === "string" && courseLessonIds.includes(parsed.lastOpenedLessonId)
         ? parsed.lastOpenedLessonId
         : null,
+      notesByLesson,
     };
   } catch {
-    return { completedLessonIds: [], lastOpenedLessonId: null };
+    return { completedLessonIds: [], lastOpenedLessonId: null, notesByLesson: {} };
   }
 }
 
@@ -57,8 +60,20 @@ export function useLocalCourseProgress() {
   }, []);
 
   const resetProgress = useCallback(() => {
-    setProgress({ completedLessonIds: [], lastOpenedLessonId: null });
+    setProgress((current) => ({ ...current, completedLessonIds: [], lastOpenedLessonId: null }));
   }, []);
+
+  const setLessonNote = useCallback((lessonId: string, note: string) => {
+    if (!courseLessonIds.includes(lessonId)) return;
+    setProgress((current) => {
+      const notesByLesson = { ...current.notesByLesson };
+      if (note) notesByLesson[lessonId] = note;
+      else delete notesByLesson[lessonId];
+      return { ...current, notesByLesson };
+    });
+  }, []);
+
+  const notesCount = Object.values(progress.notesByLesson).filter((note) => note.trim().length > 0).length;
 
   return {
     completedSet,
@@ -69,5 +84,8 @@ export function useLocalCourseProgress() {
     markOpened,
     setLessonCompletion,
     resetProgress,
+    notesByLesson: progress.notesByLesson,
+    notesCount,
+    setLessonNote,
   };
 }
