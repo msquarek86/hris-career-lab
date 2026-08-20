@@ -56,5 +56,8 @@
 - [x] Add a browser-local learner-notes feature with save status, per-lesson note context, and clear privacy messaging.
 - [x] Create and validate a reusable skill for privacy-first, open-course construction and GitHub Pages publishing.
 - [x] Test worksheets, progress visualization, local notes, and the updated public deployment on desktop and mobile.
-- [ ] Push the worksheet, progress-bar, and local-notes features to the public repository and confirm the GitHub Pages workflow succeeds.
-- [ ] Verify the live GitHub Pages worksheet download, overall progress bar, and browser-local notes on desktop and mobile.
+- [x] Push the worksheet, progress-bar, and local-notes features to the public repository and confirm the GitHub Pages workflow succeeds.
+- [x] Verify the live GitHub Pages worksheet download, overall progress bar, and browser-local notes on desktop and mobile.
+- [x] Trigger and record a live 375px mobile GitHub Pages worksheet download with its generated filename.
+- [x] Capture and record a live 375px mobile GitHub Pages dashboard or lesson view with a visible overall progress indicator.
+- [x] Update the release-verification record with the completed mobile worksheet-download and overall-progress checks.
