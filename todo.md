@@ -48,3 +48,4 @@
 - [ ] Create the approved public `hris-career-lab` GitHub repository and upload the prepared browser-only course.
 - [ ] Enable GitHub Pages with the included Actions workflow and capture the public project URL.
 - [ ] Verify the public homepage, dashboard, direct lesson fallback, video links, and browser-local learning progress.
+- [ ] Fix the GitHub Pages Actions workflow so pnpm is installed before Node dependency caching and the first public deploy succeeds.

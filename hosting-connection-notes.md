@@ -9,3 +9,7 @@ The app’s listed permissions were read access to metadata and read/write acces
 ## Revocation confirmation
 
 GitHub’s Installed GitHub Apps list was checked again after the user completed the removal. The **Cloudflare Workers and Pages** application no longer appeared. The remaining listed integration was **Manus Connector**. This confirms that the Cloudflare GitHub App no longer has repository access through this account.
+
+## GitHub Pages publication setup
+
+The public repository `https://github.com/msquarek86/hris-career-lab` was created with the prepared course project pushed to its `main` branch. In **Settings → Pages**, the publishing source was set to **GitHub Actions**. The repository includes the custom `.github/workflows/deploy-pages.yml` workflow, which builds `dist/public` with the repository subpath before publishing a GitHub Pages artifact. The next step is to confirm the first successful workflow deployment and public project URL.
