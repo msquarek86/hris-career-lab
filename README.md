@@ -46,6 +46,7 @@ Verify a change before opening a pull request:
 pnpm check
 pnpm test
 pnpm build
+pnpm build:static
 ```
 
 ## Publish to GitHub
@@ -62,49 +63,49 @@ Every module pairs one video briefing with a guided practical session. The sessi
 
 | Module theme | Example recommended resource | Practice pairing |
 | --- | --- | --- |
-| Talent Acquisition | [SHRM: How to Recruit “Hidden Talent”](https://www.youtube.com/watch?v=iZujLexGi-U) [4] | Build a Boolean search, screening rubric, and evidence-led candidate comparison. |
-| HRIS Foundation | [What Is an HRIS? — AIHR Learning Bite](https://www.youtube.com/watch?v=Y72bRzL-bHU) [5] | Map an HR event to data fields, approvals, controls, and a reporting check. |
-| Professional Communication | [Think Fast, Talk Smart: Communication Techniques](https://www.youtube.com/watch?v=HAnw168huqA) [6] | Rehearse and improve a structured HR update or interview response. |
-| Career Reentry | [CIPD: Breaking into the people profession](https://www.youtube.com/watch?v=9_LAfYaijVQ) [7] | Produce an honest career-return narrative and two evidence-based STAR-story outlines. |
+| Talent Acquisition | [SHRM: How to Recruit “Hidden Talent”](https://www.youtube.com/watch?v=iZujLexGi-U) [6] | Build a Boolean search, screening rubric, and evidence-led candidate comparison. |
+| HRIS Foundation | [What Is an HRIS? — AIHR Learning Bite](https://www.youtube.com/watch?v=Y72bRzL-bHU) [7] | Map an HR event to data fields, approvals, controls, and a reporting check. |
+| Professional Communication | [Think Fast, Talk Smart: Communication Techniques](https://www.youtube.com/watch?v=HAnw168huqA) [8] | Rehearse and improve a structured HR update or interview response. |
+| Career Reentry | [CIPD: Breaking into the people profession](https://www.youtube.com/watch?v=9_LAfYaijVQ) [9] | Produce an honest career-return narrative and two evidence-based STAR-story outlines. |
 
-## Free-tier deployment guide
+## Hosting: GitHub Pages static deployment
 
-The learner-facing application has no account flow or server-backed progress requirement. After `pnpm build`, the browser-ready site is available in `dist/public`, allowing it to be deployed as a static site. A permanently cost-free service cannot be guaranteed: providers can change eligibility, fair-use terms, or included limits at any time.
+The learner-facing course **does need a host** if others should visit it through a public URL. It does **not** need a server host, database, Manus OAuth, email storage, password storage, or persistent backend. The dedicated `build:github-pages` command produces only browser files in `dist/public`; unused Express and database code is excluded from the static deployment.
 
-| Platform | Current fit | Deployment notes |
+**GitHub Pages is the recommended hosting path for this repository showcase.** It is a static hosting service that publishes HTML, CSS, and JavaScript from a GitHub repository, including sites built with a custom GitHub Actions workflow. [1] [2] This project includes that workflow at `.github/workflows/deploy-pages.yml` and a GitHub Pages 404 fallback for direct lesson URLs.
+
+| Platform | Fit for this project | Important boundary |
 | --- | --- | --- |
-| **Vercel Hobby** | Strong fit for a personal, non-commercial static portfolio or learning project. | The Hobby plan is free for personal projects and is subject to its usage and fair-use limits. Import the GitHub repo, use `pnpm install --frozen-lockfile && pnpm build` as the build command, and publish `dist/public`. [1] |
-| **Render Static Site** | Strong fit when you want a Git-connected static deployment. | Render supports free static sites. Connect the GitHub repo, set the build command to `pnpm install --frozen-lockfile && pnpm build`, and set the publish directory to `dist/public`. Review current included bandwidth and pipeline limits before sharing publicly. [2] |
-| **GitHub Pages** | Appropriate if you later configure a static-site publishing workflow. | The app does not require sign-in or a database for the learner experience, but configure a static build-and-publish workflow before selecting this option. |
-| **Railway** | Not required for the open learner experience. | Railway can host Node projects, but its current Free plan includes a limited monthly credit. Use it only if you later add a real server-side feature. [3] |
+| **GitHub Pages** | **Recommended.** No separate hosting account or server process is needed; the included workflow builds and deploys the client-only course. | Public Pages sites are publicly reachable, and GitHub logs visitor IP addresses for security purposes. [1] |
+| **Cloudflare Pages** | A viable static-host alternative if its dashboard verification succeeds. | The previous Cloudflare GitHub App connection should remain uninstalled unless you intentionally choose that platform again. |
+| **Vercel Hobby** | Suitable for a personal portfolio site. | The free plan is subject to current usage and fair-use conditions. [4] |
+| **Render or Railway** | Unnecessary for the current learner experience. | Use a server host only after adding accounts, shared progress, administration, submissions, or other genuine backend features. |
 
-### Vercel static deployment
+### GitHub Pages deployment
 
-1. Create a public GitHub repository and push this project.
-2. In Vercel, choose **Add New → Project**, then import the repository.
-3. Configure the build command as `pnpm install --frozen-lockfile && pnpm build`.
-4. Configure the output directory as `dist/public`.
-5. Deploy, open the public URL, complete a lesson, refresh the page, and confirm the progress indicator remains on the same browser.
+1. Create a **public** GitHub repository named `hris-career-lab` under your account and push this project to its `main` branch. Do not commit `.env` files, credentials, employee data, candidate data, or learner data.
+2. The included workflow builds the Vite client with the project subpath `/hris-career-lab/`, uploads `dist/public`, and deploys it to GitHub Pages through GitHub Actions. It uses the official Pages configuration, artifact-upload, and deploy actions. [2]
+3. In the repository, open **Settings → Pages**. Under **Build and deployment → Source**, select **GitHub Actions**. GitHub will create the `github-pages` environment if it does not already exist. [3]
+4. Push to `main` or choose **Run workflow** from the Actions tab. When the workflow succeeds, GitHub will show the public project URL, generally in the form `https://YOUR-ACCOUNT.github.io/hris-career-lab/`.
+5. Test the homepage, `/dashboard`, and a direct lesson URL such as `/learn/hris-data-and-organizations`. The included `404.html` returns direct GitHub Pages lesson requests to the client router.
+6. If you later configure a custom domain, add it through **Settings → Pages**. Do not add auth, database, or OAuth settings unless you deliberately redesign the open course around a backend.
 
-### Render static deployment
-
-1. In Render, create a **Static Site** and connect the GitHub repository.
-2. Use `pnpm install --frozen-lockfile && pnpm build` as the build command.
-3. Use `dist/public` as the publish directory.
-4. Deploy and test dashboard, lesson navigation, completion, reset, and mobile responsiveness.
+> **Privacy note:** The application itself does not create learner accounts or transmit completion data to the course project. Hosting and external video providers still handle normal website requests under their own terms, so link to their privacy notices in any public policy you publish.
 
 ## References
 
-[1] [Vercel: Hobby Plan](https://vercel.com/docs/plans/hobby)
+[1] [GitHub Docs: About GitHub Pages](https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages)
 
-[2] [Render: Deploy for Free](https://render.com/docs/free)
+[2] [GitHub Docs: Using custom workflows with GitHub Pages](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages)
 
-[3] [Railway: Pricing Plans](https://docs.railway.com/reference/pricing)
+[3] [GitHub Docs: Configuring a publishing source for GitHub Pages](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site)
 
-[4] [Workforce.com: SHRM — How to Recruit “Hidden Talent”](https://www.youtube.com/watch?v=iZujLexGi-U)
+[4] [Vercel: Hobby Plan](https://vercel.com/docs/plans/hobby)
 
-[5] [AIHR: What Is an HRIS? — AIHR Learning Bite](https://www.youtube.com/watch?v=Y72bRzL-bHU)
+[6] [Workforce.com: SHRM — How to Recruit “Hidden Talent”](https://www.youtube.com/watch?v=iZujLexGi-U)
 
-[6] [Stanford Graduate School of Business: Think Fast, Talk Smart](https://www.youtube.com/watch?v=HAnw168huqA)
+[7] [AIHR: What Is an HRIS? — AIHR Learning Bite](https://www.youtube.com/watch?v=Y72bRzL-bHU)
 
-[7] [CIPD: Breaking into the people profession](https://www.youtube.com/watch?v=9_LAfYaijVQ)
+[8] [Stanford Graduate School of Business: Think Fast, Talk Smart](https://www.youtube.com/watch?v=HAnw168huqA)
+
+[9] [CIPD: Breaking into the people profession](https://www.youtube.com/watch?v=9_LAfYaijVQ)

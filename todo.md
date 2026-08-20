@@ -30,3 +30,21 @@
 - [x] Validate or replace every external video recommendation so all live course links have a checked source, title, and topical fit.
 - [x] Verify the video-briefing documentation edits and test an in-app external-video link flow on desktop and mobile.
 - [x] Verify the external-video anchor action under the mobile lesson layout and record the result separately from the desktop link check.
+- [x] Assess whether the open course requires a server host and select a safe current free-tier static hosting option.
+- [x] Prepare static-host configuration and concise deployment documentation without exposing credentials or learner data.
+- [x] Verify the static production build and provide step-by-step publication guidance for the selected platform.
+- [x] Verify in GitHub Settings → Applications → Installed GitHub Apps that Cloudflare Workers & Pages no longer appears, or capture evidence that its repository access has been removed.
+- [x] Add a GitHub Pages Actions workflow that builds the browser-only course and publishes only the static output.
+- [x] Update repository documentation for the GitHub Pages deployment path and the Cloudflare verification fallback.
+- [ ] Create the approved public `hris-career-lab` repository, upload the prepared project, and enable its GitHub Pages workflow.
+- [ ] Verify the public GitHub Pages course, direct lesson routes, external video links, and browser-local progress behavior.
+- [x] Add a GitHub Pages Actions workflow that builds the browser-only course and publishes only the static output. Duplicate backlog entry consolidated with item 37.
+- [x] Update repository documentation for the GitHub Pages deployment path and the Cloudflare verification fallback. Duplicate backlog entry consolidated with item 38.
+- [x] Create the approved public `hris-career-lab` repository, upload the prepared project, and enable its GitHub Pages workflow. Duplicate backlog entry consolidated with item 39.
+- [x] Verify the public GitHub Pages course, direct lesson routes, external video links, and browser-local progress behavior. Duplicate backlog entry consolidated with item 40.
+- [ ] Create the approved private `hris-career-lab` GitHub repository and upload the prepared project without enabling public Pages.
+- [ ] Verify the private repository files and GitHub Pages workflow readiness while keeping public hosting deferred.
+- [ ] Update the hosting documentation to state that GitHub Pages publication should occur only after repository visibility and the user’s sharing intent are reviewed.
+- [ ] Create the approved public `hris-career-lab` GitHub repository and upload the prepared browser-only course.
+- [ ] Enable GitHub Pages with the included Actions workflow and capture the public project URL.
+- [ ] Verify the public homepage, dashboard, direct lesson fallback, video links, and browser-local learning progress.

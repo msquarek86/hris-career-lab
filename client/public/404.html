@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Opening HRIS Career Lab</title>
+    <script>
+      (function () {
+        var projectBase = "/hris-career-lab/";
+        var path = window.location.pathname;
+        var route = path.indexOf(projectBase) === 0 ? path.slice(projectBase.length) : "";
+        var destination = projectBase + (route ? "?route=" + encodeURIComponent("/" + route) : "");
+        window.location.replace(destination + window.location.search.replace(/^\?/, route ? "&" : "?") + window.location.hash);
+      })();
+    </script>
+  </head>
+  <body>
+    <p>Opening HRIS Career Lab…</p>
+  </body>
+</html>
