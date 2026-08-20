@@ -35,3 +35,11 @@ Open the dashboard in a fresh browser, start a lesson, mark it complete, return 
 ## Content review
 
 Every course module includes source-derived suggestions, interview questions, and one interview-style challenge. Workday content remains clearly labelled as conceptual or simulated; it does not claim tenant access or certification.
+
+## Public GitHub Pages verification
+
+The static course was successfully published at `https://msquarek86.github.io/hris-career-lab/`. The public homepage loaded with the open-course messaging, source-derived 13-level curriculum, and no account, email, or password prompt. A direct request to `/hris-career-lab/learn/hris-data-and-organizations` also loaded the HRIS lesson through the GitHub Pages fallback. The public lesson included its video briefing, external-video action, practical session, interview practice, and browser-local completion control.
+
+On the published lesson, selecting **Mark complete** immediately changed the status to **Completed** and the control to **Mark incomplete**. The published dashboard then showed 5% progress, one of 21 lessons complete, the HRIS lesson as the continuation point, and Level 4 as one of two lessons complete. This confirms the public course preserves its no-account, browser-local progress behavior.
+
+The public lesson’s **Watch external video** action resolved to the intended AIHR YouTube URL. YouTube displayed its own anonymous-session “Sign in to confirm you’re not a bot” wall in this browser, but the course link and destination were correct; video availability beyond that page is governed by YouTube’s controls, not the course site.
